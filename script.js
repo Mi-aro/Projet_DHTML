@@ -3,6 +3,22 @@ function calcDet(a11, a12, a13, a21, a22, a23, a31, a32, a33)
 {return (a11 * a22 * a33) + (a12 * a23 * a31) + (a13 * a21 * a32)- (a13 * a22 * a31) - (a11 * a23 * a32) - (a12 * a21 * a33);
 }
 
+function afficherSection(idetifiant) {
+    const sections = ['acceuil', 'cramer', 'image', 'panneaux', 'database'];
+
+    sections.forEach(function(id){
+        const element = document.getElementById('content-'+id);
+        if(element) {
+            if (id === idetifiant) {
+                element.classList.remove('d-none');
+            }
+            else {
+                element.classList.add('d-none');
+            }
+        }
+    });
+
+}
 
 
 function resoudreCramer() {
@@ -27,7 +43,7 @@ function resoudreCramer() {
     if (isNaN(a11) || isNaN(a12) || isNaN(a13) || isNaN(b1) ||
         isNaN(a21) || isNaN(a22) || isNaN(a23) || isNaN(b2) ||
         isNaN(a31) || isNaN(a32) || isNaN(a33) || isNaN(b3)) {
-        alert("Veuillez remplir tous les coefficients avant de calculer.");
+        alert("Veuillez remplir tous les cases avant de résoudre.");
         return;
     }
 
@@ -57,8 +73,4 @@ function resoudreCramer() {
     document.getElementById('res-x1').innerText = x1.toFixed(2);
     document.getElementById('res-x2').innerText = x2.toFixed(2);
     document.getElementById('res-x3').innerText = x3.toFixed(2);
-
-    // Afficher la boîte de résultat et cacher le message d'erreur
-    document.getElementById('erreur-box').classList.add('d-none');
-    document.getElementById('resultat-box').classList.remove('d-none');
 }

@@ -21,14 +21,21 @@
 
             <nav class="col-md-2 border-end border-black p-4 min-vh-100">
                 <div class="nav flex-column">
-                    <a href="#" class="liens active">Cramer</a>
-                    <a href="#" class="liens">Image</a>
-                    <a href="#" class="liens">Panneaux</a>
-                    <a href="#" class="liens">Database</a>
+                    <a href="#content-acceuil" class="liens " onclick="afficherSection('acceuil')">Acceuil</a>
+                    <a href="#content-cramer" class="liens" onclick="afficherSection('cramer')">Cramer</a>
+                    <a href="#content-image" class="liens" onclick="afficherSection('image')">Image</a>
+                    <a href="#content-panneaux" class="liens" onclick="afficherSection('panneaux')">Panneaux</a>
+                    <a href="#content-database" class="liens" onclick="afficherSection('database')">Database</a>
                 </div>
             </nav>
 
-            <section class="col-md-10 p-4 " id="cramer">
+            <section class="col-md-10 p-4" id="content-acceuil">
+                <div class="card border-black p-4">
+                    <h2>Zone d'affichage</h2>
+                </div>
+            </section>
+
+            <section class="col-md-10 p-4 d-none" id="content-cramer">
                 <div class="card border-black p-4">
                     <h2 class="mb-3">Résolution d'un système linéaires à 3 inconnues par la méthode de cramer.</h2>
                     <p class="text-muted p-3">On saisie les coefficients A(ij) ci-desous: (Cliquez sur le bouton pour résoudre votre opération)</p>
@@ -115,7 +122,7 @@
 
                     <!-- resultat -->
                     <div id="resultat-box" >
-                        <div class="card p-3 border-success">
+                        <div class="card p-3 border-success ">
                             <h4 class="text-success mb-3">Résultat:</h4>
                             <div class="row text-center">
                                 <div class="col-4">
