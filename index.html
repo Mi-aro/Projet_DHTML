@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <div class="container-fluid p-2 text-white text-center">
+        <div class="bg-primary container-fluid p-2 text-white text-center">
             <h2>Projet-DHTML</h2>
         </div>
     </header>
@@ -19,28 +19,146 @@
     <main class="container-fluid">
         <div class="row">
 
-            <nav class="col-md-2 border-end p-4">
+            <nav class="col-md-2 border-end border-black p-4 min-vh-100">
                 <div class="nav flex-column">
-                    <a href="#" class="liens">Cramer</a>
+                    <a href="#" class="liens active">Cramer</a>
                     <a href="#" class="liens">Image</a>
                     <a href="#" class="liens">Panneaux</a>
                     <a href="#" class="liens">Database</a>
                 </div>
             </nav>
 
-            <section class="col-md-10 p-4">
-                <div class="card  border-black p-4" id="zone">
-                <h2 class="text-center">Zone d'affichage</h2>
+            <section class="col-md-10 p-4 " id="cramer">
+                <div class="card border-black p-4">
+                    <h2 class="mb-3">Résolution d'un système linéaires à 3 inconnues par la méthode de cramer.</h2>
+                    <p class="text-muted p-3">On saisie les coefficients A(ij) ci-desous: (Cliquez sur le bouton pour résoudre votre opération)</p>
+
+                    
+
+                    <form id="cramer-form" class="mb-4">
+
+                        <div class="row g-2 align-items-center mb-3">
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a11" placeholder="A11"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₁ +</div>
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a12" placeholder="A12"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₂ +</div>
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a13" placeholder="A13"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₃ =</div>
+                            <div class="col-3">
+                                <input type="number" step="any" class="form-control border-primary" id="b1"
+                                    placeholder="B1" required>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 align-items-center mb-3">
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a21" placeholder="A21"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₁ +</div>
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a22" placeholder="A22"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₂ +</div>
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a23" placeholder="A23"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₃ =</div>
+                            <div class="col-3">
+                                <input type="number" step="any" class="form-control border-primary" id="b2"
+                                    placeholder="B2" required>
+                            </div>
+                        </div>
+
+                        <div class="row g-2 align-items-center mb-4">
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a31" placeholder="A31"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₁ +</div>
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a32" placeholder="A32"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₂ +</div>
+                            <div class="col-2">
+                                <input type="number" step="any" class="form-control" id="a33" placeholder="A33"
+                                    required>
+                            </div>
+                            <div class="col-1 text-center fw-bold">X₃ =</div>
+                            <div class="col-3">
+                                <input type="number" step="any" class="form-control border-primary" id="b3"
+                                    placeholder="B3" required>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="resoudreCramer()" class="btn btn-primary  py-2 ">
+                            RESOUDRE
+                        </button>
+                    </form>
+
+                    <div id="resultat-box" >
+                        <div class="card p-3 border-success">
+                            <h4 class="text-success mb-3">Résultat:</h4>
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <div class="p-2 border border-success rounded">
+                                        <span class="text-muted d-block">Déterminant principale (delta)</span>
+                                        <strong id="det-principal" class="fs-5">-</strong>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="row g-2">
+                                        <div class="col-4">
+                                            <div class="p-2 border border-success rounded">
+                                                <strong class="text-black">X₁</strong> = <span id="res-x1"
+                                                    class="fw-bold">-</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="p-2 border border-success rounded">
+                                                <strong class="text-black">X₂</strong> = <span id="res-x2"
+                                                    class="fw-bold">-</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="p-2 border border-success rounded bg-white">
+                                                <strong class="text-black">X₃</strong> = <span id="res-x3"
+                                                    class="fw-bold">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="erreur-box" class="alert alert-danger d-none">
+                        Le déterminant principale est égal à 0. Le système n'a pas de solution unique (il a
+                        soit une infinité de solutions, soit aucune).
+                    </div>
+
                 </div>
             </section>
 
         </div>
     </main>
 
-    <footer class="text-white text-center py-1">
-            <h2>AUTEURS: </h2>
+    <footer class="bg-primary text-white text-center py-1">
+        <h2>AUTEURS: </h2>
     </footer>
-
+    <script src="/script.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
