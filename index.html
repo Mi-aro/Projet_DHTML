@@ -35,8 +35,10 @@
 
                     
 
+                    <!-- form-->
                     <form id="cramer-form" class="mb-4">
 
+                        <!--ligne 1-->
                         <div class="row g-2 align-items-center mb-3">
                             <div class="col-2">
                                 <input type="number" step="any" class="form-control" id="a11" placeholder="A11"
@@ -59,6 +61,7 @@
                             </div>
                         </div>
 
+                        <!-- ligne 2 -->
                         <div class="row g-2 align-items-center mb-3">
                             <div class="col-2">
                                 <input type="number" step="any" class="form-control" id="a21" placeholder="A21"
@@ -81,6 +84,7 @@
                             </div>
                         </div>
 
+                        <!-- ligne 3 -->
                         <div class="row g-2 align-items-center mb-4">
                             <div class="col-2">
                                 <input type="number" step="any" class="form-control" id="a31" placeholder="A31"
@@ -103,11 +107,13 @@
                             </div>
                         </div>
 
+                        <!-- bouton -->
                         <button type="button" onclick="resoudreCramer()" class="btn btn-primary  py-2 ">
                             RESOUDRE
                         </button>
                     </form>
 
+                    <!-- resultat -->
                     <div id="resultat-box" >
                         <div class="card p-3 border-success">
                             <h4 class="text-success mb-3">Résultat:</h4>
@@ -144,6 +150,7 @@
                         </div>
                     </div>
 
+                    <!-- message d'erreur si le det-pricip=0 -->
                     <div id="erreur-box" class="alert alert-danger d-none">
                         Le déterminant principale est égal à 0. Le système n'a pas de solution unique (il a
                         soit une infinité de solutions, soit aucune).
